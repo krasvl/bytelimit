@@ -1,4 +1,4 @@
-# TestLimit
+# ByteLimit
 
 A network rate limiter implementation in Go that provides TCP connection rate limiting with configurable rules. This package allows you to limit the rate of incoming http requests based on various criteria like IP addresses or custom Headers.
 
@@ -153,6 +153,17 @@ keyBuilder := NewKeyBuilder().
     AllowMethod("POST").
     AllowHeader("X-API-Key", "premium-key").
     SkipHeader("X-Health-Check", "true")
+```
+
+## Benchmarks
+
+```
+BenchmarkListenerGetRequestsKeepAliveFalse/with_limiter-14                  9891            111428 ns/op           24539 B/op        162 allocs/op
+BenchmarkListenerGetRequestsKeepAliveFalse/without_limiter-14              11097            104293 ns/op           18803 B/op        140 allocs/op
+BenchmarkListenerPostRequestsKeepAliveFalse/with_limiter-14                10198            116600 ns/op           26152 B/op        170 allocs/op
+BenchmarkListenerPostRequestsKeepAliveFalse/without_limiter-14             10735            108125 ns/op           19861 B/op        150 allocs/op
+BenchmarkListenerShuffleRequestsKeepAliveFalse/with_limiter-14              9705            118170 ns/op           25423 B/op        167 allocs/op
+BenchmarkListenerShuffleRequestsKeepAliveFalse/without_limiter-14          10771            113843 ns/op           19337 B/op        145 allocs/op
 ```
 
 ## Dependencies
