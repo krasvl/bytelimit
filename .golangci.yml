@@ -11,16 +11,10 @@ linters-settings:
   errcheck:
     check-type-assertions: false
     check-blank: false
-  govet:
-    use-installed-packages: false
-  golint:
-    min-confidence: 0.8
   gofmt:
     simplify: true
   gocyclo:
     min-complexity: 10
-  dupl:
-    threshold: 80
   goconst:
     min-len: 3
     min-occurrences: 3
@@ -28,11 +22,6 @@ linters-settings:
     locale: US
   lll:
     line-length: 140
-  unused:
-    check-exported: false
-  unparam:
-    algo: cha
-    check-exported: false
   nakedret:
     max-func-lines: 30
 
@@ -52,12 +41,10 @@ linters:
     - misspell
     - lll
     - nakedret
-  enable-all: false
   disable:
     - depguard
     - prealloc
     - dupl
-  disable-all: false
 
 issues:
   exclude-use-default: false
