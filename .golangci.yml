@@ -1,0 +1,69 @@
+run:
+  timeout: 1m
+  tests: true
+
+output:
+  formats:
+    - format: colored-line-number
+  print-linter-name: true
+
+linters-settings:
+  errcheck:
+    check-type-assertions: false
+    check-blank: false
+  govet:
+    use-installed-packages: false
+  golint:
+    min-confidence: 0.8
+  gofmt:
+    simplify: true
+  gocyclo:
+    min-complexity: 10
+  dupl:
+    threshold: 80
+  goconst:
+    min-len: 3
+    min-occurrences: 3
+  misspell:
+    locale: US
+  lll:
+    line-length: 140
+  unused:
+    check-exported: false
+  unparam:
+    algo: cha
+    check-exported: false
+  nakedret:
+    max-func-lines: 30
+
+linters:
+  enable:
+    - gosimple
+    - staticcheck
+    - unused
+    - govet
+    - errcheck
+    - gosec
+    - ineffassign
+    - typecheck
+    - unconvert
+    - gocyclo
+    - gofmt
+    - misspell
+    - lll
+    - nakedret
+  enable-all: false
+  disable:
+    - depguard
+    - prealloc
+    - dupl
+  disable-all: false
+
+issues:
+  exclude-use-default: false
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+        - gosec
+        - gocyclo
